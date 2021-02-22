@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center;">Registration Page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="registrationForm" (ngSubmit)="registerForm()">
+
+    <ion-item lines="full">
+      <ion-input formControlName="fname" autocapitalize inputmode="text"  placeholder="First Name"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let error of errorMessages.fname">
+        <div class="error-message" *ngIf="registrationForm.get('fname').hasError(error.type) && 
+        (registrationForm.get('fname').dirty || registrationForm.get('fname').touched)">
+        <ion-icon style="color: red;" name="information-circle-outline"></ion-icon><small style="color: red;">{{error.feedback}}</small>
+    </div>
+      </ng-container>
+    </div>
+
+    <ion-item lines="full">
+      <ion-input formControlName="lname" inputmode="text" placeholder="Last Name"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let error of errorMessages.lname">
+        <div class="error-message" *ngIf="registrationForm.get('lname').hasError(error.type) && 
+        (registrationForm.get('lname').dirty || registrationForm.get('lname').touched)">
+        <ion-icon style="color: red;" name="information-circle-outline"></ion-icon><small style="color: red;">{{error.feedback}}</small>
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item class="input-group" lines="full">
+      <ion-input formControlName="email" inputmode="email" placeholder="Email"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let error of errorMessages.email">
+        <div class="error-message" *ngIf="registrationForm.get('email').hasError(error.type) && 
+        (registrationForm.get('email').dirty || registrationForm.get('email').touched)">
+        <ion-icon style="color: red;" name="information-circle-outline"></ion-icon><small style="color: red;">{{error.feedback}}</small>
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item class="input-group" lines="full">
+      <ion-input formControlName="cellPhone" inputmode="tel" placeholder="Cellphone Number"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let error of errorMessages.cellPhone">
+        <div class="error-message" *ngIf="registrationForm.get('cellPhone').hasError(error.type) && 
+        (registrationForm.get('cellPhone').dirty || registrationForm.get('cellPhone').touched)">
+        <ion-icon style="color: red;" name="information-circle-outline"></ion-icon><small style="color: red;">{{error.feedback}}</small>
+        </div>
+      </ng-container>
+    </div>
+
+    <div formGroupName="passwordGroup">
+
+      <ion-item class="input-group" lines="full">
+        <ion-input formControlName="password" inputmode="text" placeholder="Password"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let error of errorMessages.password">
+          <div class="error-message" *ngIf="registrationForm.get('password').hasError(error.type) && 
+          (registrationForm.get('password').dirty || registrationForm.get('password').touched)">
+          <ion-icon style="color: red;" name="information-circle-outline"></ion-icon><small style="color: red;">{{error.feedback}}</small>
+          </div>
+        </ng-container>
+      </div>
+       
+    
+      <ion-item class="input-group" lines="full">
+        <ion-input formControlName="confirmPassword" inputmode="text" placeholder="Confirm Password"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let error of errorMessages.confirmPassword">
+          <div class="error-message" *ngIf="registrationForm.get('confirmPassword').hasError(error.type) && 
+          (registrationForm.get('confirmPassword').dirty || registrationForm.get('confirmPassword').touched)">
+          <ion-icon style="color: red;" name="information-circle-outline"></ion-icon><small style="color: red;">{{error.feedback}}</small>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+ 
+    <br>
+
+    <ion-button [disabled]="!registrationForm.valid" type="submit" color="medium" expand="block">Sign Up</ion-button>
+      
+  </form>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title style="text-align: center;">
+        <small>
+          Already a Member? <a href="login">Sign In</a>
+        </small>
+      </ion-title>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>

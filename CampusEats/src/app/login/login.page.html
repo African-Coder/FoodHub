@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title style="text-align: center;">Login Page</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="loginForm" (ngSubmit)="logForm()" >
+   
+    <ion-item class="input-group" lines="full">
+      <ion-input formControlName="email" type="email" placeholder="Email"></ion-input>
+    </ion-item>
+    <!-- <div class="validation-errors">
+      <ng-container *ngFor="let error of errorMessages.email">
+        <div class="error-message" *ngIf="loginForm.get('email').hasError(error.type) && 
+        (loginForm.get('email').dirty || loginForm.get('email').touched)">
+        <ion-icon style="color: red;" name="information-circle-outline"></ion-icon><small style="color: red;">{{error.message}}</small>
+        </div>
+      </ng-container>
+    </div> -->
+
+    <ion-item lines="full">
+      <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+    </ion-item>
+    <!-- <div class="validation-errors">
+    <ng-container *ngFor="let error of errorMessages.password">
+      <div class="error-message" *ngIf="loginForm.get('password').hasError(error.type) && 
+      (loginForm.get('password').dirty || loginForm.get('password').touched)">
+      <ion-icon style="color: red;" name="information-circle-outline"></ion-icon><small style="color: red;">{{error.message}}</small>
+      </div>
+    </ng-container>
+  </div> -->
+
+    <ion-row>
+      <ion-col>
+        <ion-button [disabled]="!loginForm.valid" type="submit" color="medium" expand="block">Sign In</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title style="text-align: center;">
+        <small>
+          Not Yet a Member? <a href="register">Sign Up</a>
+        </small>
+      </ion-title>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>
